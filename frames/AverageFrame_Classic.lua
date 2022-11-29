@@ -2,6 +2,15 @@ local _, addonTable = ...
 
 local L = addonTable.GetLocale()
 
+local backdrop2 = {
+    bgFile = "Interface\\TutorialFrame\\TutorialFrameBackground",
+    edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
+    edgeSize = 8,
+    tileSize = 8,
+    tile = true,
+    insets = { left = 2, right = 2, top = 2, bottom = 2 }
+}
+
 if XToLevel.AverageFrameAPI == nil then
     XToLevel.AverageFrameAPI = { }
 end
@@ -254,7 +263,7 @@ XToLevel.AverageFrameAPI["Classic"] =
         self.window:SetWidth(totalWidth)
         self.window:SetHeight(totalHeight)
     end,
-    
+
     ---
     -- Function
     CreateLine = function(self, lineName, group, tabIndex, toolTip, initalValue, fontStringTemplate)
@@ -263,6 +272,7 @@ XToLevel.AverageFrameAPI["Classic"] =
         self.lines[lineName]:RegisterForDrag("LeftButton")
         self.lines[lineName].group = group
         self.lines[lineName].tabIndex = tabIndex
+        self.lines[lineName].backdrop = backdrop
         self.lines[lineName].text = self.lines[lineName]:CreateFontString(nil, 'OVERLAY', fontStringTemplate)
         self.lines[lineName].text:SetText(initalValue)
         self.lines[lineName].actualWidth = self.lines[lineName].text:GetWidth()

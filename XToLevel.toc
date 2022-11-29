@@ -1,13 +1,13 @@
-## Interface: 90100
-## Title: XToLevel
+## Interface: 100002
+## Title: XToLevelNG
 ## Author: @project-author@
 ## Version: @project-version@
 ## Notes: Shows mobs, quests, dungeons and battles needed until you reach your next level.
-## eMail: r4d1o4ct1v3v3@gmail.com
-## URL: https://www.curseforge.com/wow/addons/xto-level
-## X-Compatible-With: 80300
+## URL: https://www.curseforge.com/wow/addons/xtolevelng
+## X-Compatible-With: 100002
 ## X-Since-Interface: 40100
 ## X-Category: Quest
+## X-Curse-Project-ID: 714977
 ## OptionalDeps: LibStub,CallbackHandler-1.0,LibDataBroker-1.1,AceTimer-3.0,AceConfig-3.0,AceGUI-3.0,AceDB-3.0,AceDBOptions-3.0
 ## DefaultState: Enabled
 ## LoadOnDemand: 0

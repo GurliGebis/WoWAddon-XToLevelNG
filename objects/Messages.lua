@@ -154,7 +154,7 @@ function XToLevel.Messages.Floating:Print(text, color, style)
     if type(style) ~= "table" then
         style = self.questStyle
     end
-    UIErrorsFrame:AddMessage(text, r, g, b, style.group, style.fade);
+    UIErrorsFrame:AddMessage(text, r, g, b);
 end
 
 ---

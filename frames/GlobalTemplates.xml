@@ -8,7 +8,6 @@
         <Size>
             <AbsDimension x="14" y="14" />
         </Size>
-        <Backdrop></Backdrop>
         <Layers>
             <Layer level="BORDER">
                 <Texture name="$parentBackground">

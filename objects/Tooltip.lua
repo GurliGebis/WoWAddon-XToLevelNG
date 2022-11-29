@@ -34,7 +34,7 @@ function XToLevel.Tooltip:Initialize()
     end
     self.initialized = true
 
-    GameTooltip:HookScript("OnTooltipSetUnit", self.OnTooltipSetUnit_HookCallback);
+    TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, self.OnTooltipSetUnit_HookCallback);
 end
 
 ---
