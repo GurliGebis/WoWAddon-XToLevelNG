@@ -4,7 +4,7 @@
 ## Version: @project-version@
 ## Notes: Shows mobs, quests, dungeons and battles needed until you reach your next level.
 ## URL: https://www.curseforge.com/wow/addons/xtolevelng
-## X-Compatible-With: 100002
+## X-Compatible-With: 100005
 ## X-Since-Interface: 40100
 ## X-Category: Quest
 ## X-Curse-Project-ID: 714977
