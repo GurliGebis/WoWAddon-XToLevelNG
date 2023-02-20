@@ -128,8 +128,9 @@ end
 ---
 function XToLevel.Player:GetMaxLevel()
     if self.maxLevel == nil then
-        self.maxLevel = _G.MAX_PLAYER_LEVEL
+        self.maxLevel = GetMaxPlayerLevel()
     end
+
     return self.maxLevel
 end
 

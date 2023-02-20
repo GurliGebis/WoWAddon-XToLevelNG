@@ -34,7 +34,10 @@ function XToLevel.Tooltip:Initialize()
     end
     self.initialized = true
 
-    TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, self.OnTooltipSetUnit_HookCallback);
+
+    if TooltipDataProcessor then
+        TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, self.OnTooltipSetUnit_HookCallback);
+    end
 end
 
 ---
