@@ -1399,6 +1399,11 @@ end
 ---
 function XToLevel.Player:GetAverageBGObjectivesRemaining ()
     local objAverage = self:GetAverageBGObjectiveXP()
+
+    if (objAverage == nil) then
+        return nil
+    end
+
     if(objAverage > 0) then
         local xpRemaining = self.maxXP - self.currentXP
         return ceil(xpRemaining / objAverage)
