@@ -165,8 +165,7 @@ end
 
 function XToLevel.Config:Open(frameName)
     if self.frames[frameName] then
-        InterfaceOptionsFrame_OpenToCategory(self.frames[frameName])
-        InterfaceOptionsFrame_OpenToCategory(self.frames[frameName])
+        Settings.OpenToCategory(self.frames[frameName].name)
     end
 end
 
