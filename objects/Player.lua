@@ -1195,7 +1195,7 @@ function XToLevel.Player:GetQuestXpRange ()
     else
         -- A very VERY rought and quite possibly very wrong estimate.
         -- But it is accurate for the first few levels, which is where the inaccuracy would be most visible, so...
-        self.questAverage = XToLevel.QUEST_XP[self.level]
+        self.questAverage = XToLevel.QUEST_XP[self.level] or 0
         self.questRange.high = self.questAverage
         self.questRange.low = self.questAverage
         self.questRange.average = self.questAverage
