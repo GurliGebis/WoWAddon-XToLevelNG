@@ -348,7 +348,7 @@ function XToLevel.Lib:GetHeirloomXpBonus()
 	for slot, value in pairs(heirloom_slot_values) do
 		sID = GetInventoryItemID("player", slot)
 		if sID then
-			sBlackhole, sBlackhole, sQuality = GetItemInfo(sID)
+			sBlackhole, sBlackhole, sQuality = C_Item.GetItemInfo(sID)
 			if sQuality == 7 then
 				output = output + value
 			end
