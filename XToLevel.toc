@@ -1,11 +1,10 @@
-## Interface: 110107,40402,50500
+## Interface: 110200,40402,50500
 ## Interface-Wrath: 30401
 ## Title: XToLevelNG
 ## Author: @project-author@
 ## Version: @project-version@
 ## Notes: Shows mobs, quests, dungeons and battles needed until you reach your next level.
 ## URL: https://www.curseforge.com/wow/addons/xtolevelng
-## X-Compatible-With: 110107
 ## X-Since-Interface: 40100
 ## X-Category: Quest
 ## X-Curse-Project-ID: 714977
