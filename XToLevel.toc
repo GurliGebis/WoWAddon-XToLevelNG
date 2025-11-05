@@ -1,5 +1,4 @@
-## Interface: 110205,40402,50501
-## Interface-Wrath: 30401
+## Interface: 110205,50501
 ## Title: XToLevelNG
 ## Author: @project-author@
 ## Version: @project-version@
