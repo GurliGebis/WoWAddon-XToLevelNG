@@ -1,3 +1,6 @@
+# 11.2.7-20251210-1
+* Updated TOC for Mop Classic.
+
 # 11.2.7-20251204-1
 * Updated TOC for Mop Classic.
 
