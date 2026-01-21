@@ -1,3 +1,6 @@
+# 12.0.0-20260121-2
+* Disable COMBAT_LOG_EVENT_UNFILTERED event, until workaround can be found.
+
 # 12.0.0-20260121-1
 * Updated TOC to Midnight Pre-Patch.
 

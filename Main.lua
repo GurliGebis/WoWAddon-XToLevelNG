@@ -141,7 +141,7 @@ function XToLevel:RegisterEvents(level)
         self.frame:RegisterEvent("QUEST_FINISHED");
         self.frame:RegisterEvent("QUEST_COMPLETE");
         self.frame:RegisterEvent("PLAYER_TARGET_CHANGED");
-        self.frame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED");
+        --self.frame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED");
         self.frame:RegisterEvent("PLAYER_REGEN_ENABLED");
         self.frame:RegisterEvent("PLAYER_REGEN_DISABLED");
         
