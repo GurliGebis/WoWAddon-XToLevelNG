@@ -1,3 +1,7 @@
+# 12.0.0-20260126-1
+* Renable COMBAT_LOG_EVENT_UNFILTERED for classic and use PARTY_KILL in retail.
+* Tooltip fixes for secret values.
+
 # 12.0.0-20260121-2
 * Disable COMBAT_LOG_EVENT_UNFILTERED event, until workaround can be found.
 

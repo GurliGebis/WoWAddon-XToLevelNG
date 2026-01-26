@@ -94,6 +94,8 @@ function XToLevel:MainOnEvent(event, ...)
         self:OnPlayerTargetChanged()
     elseif event == "COMBAT_LOG_EVENT_UNFILTERED" then
         self:OnCombatLogEventUnfiltered(...)
+    elseif event == "PARTY_KILL" then
+        self:OnPartyKill(...)
     elseif event == "PLAYER_REGEN_ENABLED" then
         self:OnPlayerRegenEnabled()
     elseif event == "PLAYER_REGEN_DISABLED" then
@@ -141,7 +143,13 @@ function XToLevel:RegisterEvents(level)
         self.frame:RegisterEvent("QUEST_FINISHED");
         self.frame:RegisterEvent("QUEST_COMPLETE");
         self.frame:RegisterEvent("PLAYER_TARGET_CHANGED");
-        --self.frame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED");
+        if issecretvalue then
+            -- If the issecretvalue function exists, we cannot look at the combat log.
+            self.frame:RegisterEvent("PARTY_KILL");
+        else
+            -- Classic, so we do like we always have.
+            self.frame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED");
+        end
         self.frame:RegisterEvent("PLAYER_REGEN_ENABLED");
         self.frame:RegisterEvent("PLAYER_REGEN_DISABLED");
         
@@ -182,6 +190,7 @@ function XToLevel:UnregisterEvents()
 	self.frame:UnregisterEvent("TIME_PLAYED_MSG");
     self.frame:UnregisterEvent("PLAYER_TARGET_CHANGED");
     self.frame:UnregisterEvent("COMBAT_LOG_EVENT_UNFILTERED");
+    self.frame:UnregisterEvent("PARTY_KILL");
     self.frame:UnregisterEvent("PLAYER_REGEN_ENABLED");
     self.frame:UnregisterEvent("PLAYER_REGEN_DISABLED");
 
@@ -286,15 +295,35 @@ function XToLevel:OnCombatLogEventUnfiltered()
     if cl_event ~= nil then
         if cl_event == "UNIT_DIED" then
             local npc_guid = select(8, CombatLogGetCurrentEventInfo())
-            for i, data in ipairs(targetList) do
-                if data.guid == npc_guid then
-                    data.dead = true
-                    if type(targetUpdatePending) == "number" and targetUpdatePending > 0 then
-                        data.xp = targetUpdatePending;
-                        targetUpdatePending = nil;
-                        XToLevel:AddMobXpRecord(data.name, data.level, UnitLevel("player"), data.xp, data.classification)
-                    end
-                end
+            self:MarkTargetDead(npc_guid)
+        end
+    end
+end
+
+function XToLevel:OnPartyKill(attacker, target)
+    if issecurevalue(attacker) or issecurevalue(target) then
+        -- If attacker or target is secret, we cannot process this event.
+        return
+    end
+
+    if attacker ~= UnitGUID("player") then
+        -- Not the player, ignore.
+        return
+    end
+
+    self:MarkTargetDead(target)
+end
+
+---
+-- Marks a target as dead in the targetList and handles pending XP updates.
+function XToLevel:MarkTargetDead(npc_guid)
+    for i, data in ipairs(targetList) do
+        if data.guid == npc_guid then
+            data.dead = true
+            if type(targetUpdatePending) == "number" and targetUpdatePending > 0 then
+                data.xp = targetUpdatePending;
+                targetUpdatePending = nil;
+                XToLevel:AddMobXpRecord(data.name, data.level, UnitLevel("player"), data.xp, data.classification)
             end
         end
     end
