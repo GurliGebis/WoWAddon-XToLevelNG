@@ -1,5 +1,6 @@
 # 12.0.0-20260209-1
 * Added TOC for The Burning Crusade Anniversary and for Classic.
+* Make sure unit exists before checking if it is secret.
 
 # 12.0.0-20260126-1
 * Renable COMBAT_LOG_EVENT_UNFILTERED for classic and use PARTY_KILL in retail.

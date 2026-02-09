@@ -64,7 +64,7 @@ function XToLevel.Tooltip:OnTooltipSetUnit_HookCallback(...)
     if XToLevel.db.profile.general.showNpcTooltipData and XToLevel.Player.level < XToLevel.Player.maxLevel then
         local name, unit = GameTooltip:GetUnit()
 
-        if issecretvalue and C_Secrets.ShouldUnitHealthMaxBeSecret(unit) then
+        if issecretvalue and unit and C_Secrets.ShouldUnitHealthMaxBeSecret(unit) then
             return nil
         end
 
