@@ -1,3 +1,6 @@
+# 12.0.1-20260211-1
+* Updated TOC to Midnight Pre-Patch.
+
 # 12.0.0-20260209-1
 * Added TOC for The Burning Crusade Anniversary and for Classic.
 * Make sure unit exists before checking if it is secret.
