@@ -257,7 +257,7 @@ end
 function XToLevel:OnPlayerTargetChanged()
     if not regenEnabled then
         local target_guid = UnitGUID("target")
-        if target_guid ~= nil then
+        if target_guid ~= nil and not issecretvalue(target_guid) then
             local target_name = UnitName("target")
             local target_level = UnitLevel("target")
             local target_classification = UnitClassification("target")
@@ -301,12 +301,13 @@ function XToLevel:OnCombatLogEventUnfiltered()
 end
 
 function XToLevel:OnPartyKill(attacker, target)
-    if issecurevalue(attacker) or issecurevalue(target) then
+    if issecretvalue(attacker) or issecretvalue(target) then
         -- If attacker or target is secret, we cannot process this event.
         return
     end
 
-    if attacker ~= UnitGUID("player") then
+    local playerGUID = UnitGUID("player")
+    if attacker ~= playerGUID then
         -- Not the player, ignore.
         return
     end
@@ -457,7 +458,7 @@ function XToLevel:OnChatXPGain(message)
             -- Update the temporary target list.
             local found = false;
             for i, data in ipairs(targetList) do
-                if data.name == mobName and data.dead and data.xp == nil then
+                if not issecretvalue(mobName) and data.name == mobName and data.dead and data.xp == nil then
                     targetList[i].xp = unrestedXP
                     found = true
                     XToLevel:AddMobXpRecord(data.name, data.level, UnitLevel("player"), data.xp, data.classification)

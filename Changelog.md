@@ -1,3 +1,6 @@
+# 12.0.1-20260310-1
+* Fixes for several taints.
+
 # 12.0.1-20260211-1
 * Updated TOC to Midnight Pre-Patch.
 
