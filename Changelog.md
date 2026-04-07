@@ -1,3 +1,6 @@
+# 12.0.1-20260407-1
+* Fix taint error in ResizeTooltip when GetStringWidth returns a secret value.
+
 # 12.0.1-20260310-1
 * Fixes for several taints.
 

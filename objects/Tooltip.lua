@@ -45,7 +45,13 @@ end
 function XToLevel.Tooltip:ResizeTooltip()
     local str = _G[GameTooltip:GetName() .. "TextLeft" .. GameTooltip:NumLines()]
     if str ~= nil then
-        local width = str:GetStringWidth() + self.horizontalMargin
+        local strWidth = str:GetStringWidth()
+        if issecretvalue and issecretvalue(strWidth) then
+            -- Bail out if the value is tainted to avoid a Lua security error.
+            GameTooltip:Show()
+            return
+        end
+        local width = strWidth + self.horizontalMargin
         GameTooltip:SetHeight(GameTooltip:GetHeight() + str:GetStringHeight() + self.verticalMargin);
         if (GameTooltip:GetWidth() < width) then
             GameTooltip:SetWidth(width)
