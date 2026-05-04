@@ -213,7 +213,7 @@ XToLevel.AverageFrameAPI["Blocky"] =
         self.playerBoxes[4]["visible"] = db.profile.averageDisplay.playerBGs and PlayerModule.level >= 15
         self.playerBoxes[5]["visible"] = db.profile.averageDisplay.playerBGOs and PlayerModule.level >= 15
         self.playerBoxes[6]["visible"] = db.profile.averageDisplay.playerPetBattles and PlayerModule:HasPetBattleInfo()
-        self.playerBoxes[7]["visible"] = db.profile.averageDisplay.playerGathering and not Helpers:IsClassic()
+        self.playerBoxes[7]["visible"] = db.profile.averageDisplay.playerGathering and not Helpers:IsClassicEra()
         self.playerBoxes[8]["visible"] = db.profile.averageDisplay.playerDigs and PlayerModule:HasDigInfo()
         self.playerBoxes[9]["visible"] = db.profile.averageDisplay.playerProgress
 		self.playerBoxes[10]["visible"] = db.profile.averageDisplay.playerTimer

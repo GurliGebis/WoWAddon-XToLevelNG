@@ -41,9 +41,19 @@ function console:log(message)
     end
 end
 
+function Helpers:IsClassicEra()
+    local interfaceNumber = select(4, GetBuildInfo())
+    return interfaceNumber < 20000
+end
+
 function Helpers:IsClassic()
     local interfaceNumber = select(4, GetBuildInfo())
     return interfaceNumber < 80000
+end
+
+function Helpers:IsRetail()
+    local interfaceNumber = select(4, GetBuildInfo())
+    return interfaceNumber >= 80000
 end
 
 function Helpers:IsBattleground()

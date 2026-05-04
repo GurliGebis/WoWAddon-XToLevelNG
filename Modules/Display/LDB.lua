@@ -63,7 +63,7 @@ function DisplayModule:InitializeLDB()
     end
 
     -- Modify default patterns for Classic
-    if Helpers:IsClassic() then
+    if Helpers:IsClassicEra() then
         self.LDB.textPatterns.default = "{kills}{$seperator: }{color=cfcfdf}{$label}:{/color} {progress}{$value}{/progress}{/kills}{quests}{$seperator: }{color=cfcfdf}{$label}:{/color} {progress}{$value}{/progress}{/quests}{dungeons}{$seperator: }{color=cfcfdf}{$label}:{/color} {progress}{$value}{/progress}{/dungeons}{bgs}{$seperator: }{color=cfcfdf}{$label}:{/color} {progress}{$value}{/progress}{/bgs}{bgo}{$seperator: }{color=cfcfdf}{$label}:{/color} {progress}{$value}{/progress}{/bgo}{xp}{$seperator: }{progress}[{$value}]{/progress}{/xp}"
     end
 

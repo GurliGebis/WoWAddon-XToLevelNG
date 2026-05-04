@@ -88,7 +88,7 @@ function EventsModule:OnEnable()
         self:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED", "OnCombatLogEventUnfiltered")
     end
 
-    if not Helpers:IsClassic() then
+    if not Helpers:IsClassicEra() then
         self:RegisterEvent("LFG_PROPOSAL_SUCCEEDED", "OnLfgProposalSucceeded")
         self:RegisterEvent("PET_BATTLE_OVER", "OnPetBattleOver")
         self:RegisterEvent("ARCHAEOLOGY_FIND_COMPLETE", "OnArchaeologyFindComplete")

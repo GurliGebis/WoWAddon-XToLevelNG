@@ -210,12 +210,12 @@ function DisplayModule:TooltipShow(frame, anchorPoint, relativeFrame, relativePo
                 self:TooltipAddExperience()
                 GameTooltip:AddLine(" ")
             end
-            if db.profile.ldb.tooltip.showGatheringInfo and not Helpers:IsClassic() then
+            if db.profile.ldb.tooltip.showGatheringInfo and not Helpers:IsClassicEra() then
                 GameTooltip:AddLine((L["Gathering"] or "Gathering") .. ": ")
                 self:TooltipAddGathering()
                 GameTooltip:AddLine(" ")
             end
-            if db.profile.ldb.tooltip.showArchaeologyInfo and not Helpers:IsClassic() then
+            if db.profile.ldb.tooltip.showArchaeologyInfo and not Helpers:IsClassicEra() then
                 GameTooltip:AddLine((L["Archaeology"] or "Archaeology") .. ": ")
                 self:TooltipAddArchaeology()
                 GameTooltip:AddLine(" ")

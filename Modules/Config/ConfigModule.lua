@@ -1233,24 +1233,28 @@ function ConfigModule:GetOptions()
         },
     }
 
-    -- Remove Classic-incompatible options
-    if Helpers:IsClassic() then
+    -- Remove Classic Era-incompatible options (no pet battles, archaeology, gathering)
+    if Helpers:IsClassicEra() then
         options.args.Messages.args.colorArchaeology = nil
-        options.args.Messages.args.colorDelves = nil
         options.args.Window.args.behaviourArchaeologyDataToggle = nil
         options.args.Window.args.dataGathering = nil
         options.args.Window.args.dataPetBattle = nil
         options.args.Window.args.dataArchaeology = nil
-        options.args.Window.args.dataDelves = nil
         options.args.LDB.args.ldbDataGathering = nil
         options.args.LDB.args.ldbDataArchaeology = nil
         options.args.Data.args.dataRangePetBattles = nil
-        options.args.Data.args.dataRangeDelves = nil
         options.args.Data.args.dataClearPetBattles = nil
         options.args.Data.args.dataClearGathering = nil
-        options.args.Data.args.dataClearDelves = nil
         options.args.Tooltip.args.gatheringInfo = nil
         options.args.Tooltip.args.archaeologyDetails = nil
+    end
+
+    -- Remove Retail-only options (delves)
+    if not Helpers:IsRetail() then
+        options.args.Messages.args.colorDelves = nil
+        options.args.Window.args.dataDelves = nil
+        options.args.Data.args.dataRangeDelves = nil
+        options.args.Data.args.dataClearDelves = nil
     end
 
     return options

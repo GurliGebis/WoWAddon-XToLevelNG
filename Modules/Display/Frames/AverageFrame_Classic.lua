@@ -198,7 +198,7 @@ XToLevel.AverageFrameAPI["Classic"] =
             self.lines.playerTimer:Hide()
         end
 
-        if PlayerModule.isActive and db.profile.averageDisplay.playerGathering and not Helpers:IsClassic() then
+        if PlayerModule.isActive and db.profile.averageDisplay.playerGathering and not Helpers:IsClassicEra() then
             self.lines.playerGathering:Show()
         else
             self.lines.playerGathering:Hide()
