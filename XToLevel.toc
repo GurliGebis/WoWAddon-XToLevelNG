@@ -38,8 +38,3 @@ Common\common.xml
 
 # Modules
 Modules\modules.xml
-
-# Frames (to be migrated into Display module)
-frames\GlobalTemplates.xml
-frames\AverageFrame_Classic.xml
-frames\AverageFrame_Blocky.xml

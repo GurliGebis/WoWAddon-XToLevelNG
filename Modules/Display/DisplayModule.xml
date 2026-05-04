@@ -2,4 +2,7 @@
     <Script file="DisplayModule.lua" />
     <Script file="LDB.lua" />
     <Script file="Tooltip.lua" />
+    <Include file="Frames\GlobalTemplates.xml" />
+    <Include file="Frames\AverageFrame_Classic.xml" />
+    <Include file="Frames\AverageFrame_Blocky.xml" />
 </Ui>
