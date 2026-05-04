@@ -46,7 +46,7 @@ function Helpers:IsClassicEra()
     return interfaceNumber < 20000
 end
 
-function Helpers:IsClassic()
+function Helpers:IsMopClassic()
     local interfaceNumber = select(4, GetBuildInfo())
     return interfaceNumber < 80000
 end
@@ -57,7 +57,7 @@ function Helpers:IsRetail()
 end
 
 function Helpers:IsBattleground()
-    if Helpers:IsClassic() then
+    if Helpers:IsMopClassic() then
         return Helpers:GetCurrentBattlegroundName() ~= nil
     else
         return C_PvP.IsBattleground()
@@ -255,7 +255,7 @@ function Helpers:MobXP(mobName, mobLevel)
         local levelDelta = mobLevel - charLevel
         if levelDelta ~= 0 then
             local modifier = 0.05
-            if not self:IsClassic() then
+            if not self:IsMopClassic() then
                 for _level, _deltas in ipairs(_XToLevel.RETAIL_XP_MATRIX) do
                     for _d, _xp in pairs(_deltas) do
                         if _level == charLevel and tonumber(_d) == levelDelta then

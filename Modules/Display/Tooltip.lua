@@ -113,7 +113,7 @@ function DisplayModule:OnTooltipSetUnit(...)
                         color = Helpers:GetProgressColor(percent)
                     end
 
-                    if valueType == "estimate" and not Helpers:IsClassic() then
+                    if valueType == "estimate" and not Helpers:IsMopClassic() then
                         GameTooltip:AddLine("|cFFAAAAAA" .. L['Kills to level'] ..": |r |cFF" .. color .. output .. "*|r", 0.75, 0.75, 0.75)
                     else
                         GameTooltip:AddLine("|cFFAAAAAA" .. L['Kills to level'] ..": |r |cFF" .. color .. output .. "|r", 0.75, 0.75, 0.75)
