@@ -3,7 +3,7 @@
 <Script file="AverageFrame_Blocky.lua"/>
 
 <!-- Templates -->
-<Texture name="XToLevel_AverageFrame_Blocky_CounterBackground" file="Interface\AddOns\XToLevel\textures\counter_back.tga" virtual="true">
+<Texture name="XToLevel_AverageFrame_Blocky_CounterBackground" file="Interface\AddOns\XToLevel\Textures\counter_back.tga" virtual="true">
     <TexCoords left="0" right="0.77"  top="0" bottom="0.27" /> 
     <Anchors>
         <Anchor point="TOPLEFT" relativePoint="TOPLEFT">
@@ -15,9 +15,9 @@
     </Anchors>
 </Texture>
 
-<!-- file="Interface\AddOns\XToLevel\textures\progress_box_back.tga" -->
+<!-- file="Interface\AddOns\XToLevel\Textures\progress_box_back.tga" -->
 
-<Texture name="XToLevel_AverageFrame_Blocky_ProgressBarBackground" file="Interface\AddOns\XToLevel\textures\progress_box_back.tga" virtual="true">
+<Texture name="XToLevel_AverageFrame_Blocky_ProgressBarBackground" file="Interface\AddOns\XToLevel\Textures\progress_box_back.tga" virtual="true">
     <TexCoords left="0" right="0.77"  top="0" bottom="0.27" />
     <Anchors>
         <Anchor point="TOPLEFT" relativePoint="TOPLEFT">
@@ -29,7 +29,7 @@
     </Anchors>
 </Texture>
 
-<Texture name="XToLevel_AverageFrame_Blocky_ProgressBarOverlay" file="Interface\AddOns\XToLevel\textures\progress_box_bar.tga" virtual="true">
+<Texture name="XToLevel_AverageFrame_Blocky_ProgressBarOverlay" file="Interface\AddOns\XToLevel\Textures\progress_box_bar.tga" virtual="true">
     <TexCoords left="0.035" right="0.73"  top="0.035" bottom="0.24" />
     <Anchors>
         <Anchor point="TOPLEFT" relativePoint="TOPLEFT">
@@ -41,7 +41,7 @@
     </Anchors>
 </Texture>
 
-<Texture name="XToLevel_AverageFrame_Blocky_GuildProgressBarBackground" file="Interface\AddOns\XToLevel\textures\guild_progress_box_back.tga" virtual="true">
+<Texture name="XToLevel_AverageFrame_Blocky_GuildProgressBarBackground" file="Interface\AddOns\XToLevel\Textures\guild_progress_box_back.tga" virtual="true">
     <TexCoords left="0" right="0.77"  top="0" bottom="0.27" />
     <Anchors>
         <Anchor point="TOPLEFT" relativePoint="TOPLEFT">
@@ -53,7 +53,7 @@
     </Anchors>
 </Texture>
 
-<Texture name="XToLevel_AverageFrame_Blocky_GuildProgressBarOverlay" file="Interface\AddOns\XToLevel\textures\guild_progress_box_bar.tga" virtual="true">
+<Texture name="XToLevel_AverageFrame_Blocky_GuildProgressBarOverlay" file="Interface\AddOns\XToLevel\Textures\guild_progress_box_bar.tga" virtual="true">
     <TexCoords left="0.035" right="0.73"  top="0.035" bottom="0.24" />
     <Anchors>
         <Anchor point="TOPLEFT" relativePoint="TOPLEFT">
@@ -329,7 +329,7 @@
                     </Anchors>
                     <Layers>
                         <Layer level="ARTWORK">
-                            <Texture name="$parentIcon" inherits="XToLevel_AverageFrame_Blocky_CounterIcon" file="Interface\AddOns\XToLevel\textures\mob_icon.tga"></Texture>
+                            <Texture name="$parentIcon" inherits="XToLevel_AverageFrame_Blocky_CounterIcon" file="Interface\AddOns\XToLevel\Textures\mob_icon.tga"></Texture>
                         </Layer>
                     </Layers>
                     <Scripts>
@@ -350,7 +350,7 @@
                     </Anchors>
                     <Layers>
                         <Layer level="ARTWORK">
-                            <Texture name="$parentIcon" inherits="XToLevel_AverageFrame_Blocky_CounterIcon" file="Interface\AddOns\XToLevel\textures\quest_icon.tga"></Texture>
+                            <Texture name="$parentIcon" inherits="XToLevel_AverageFrame_Blocky_CounterIcon" file="Interface\AddOns\XToLevel\Textures\quest_icon.tga"></Texture>
                         </Layer>
                     </Layers>
                     <Scripts>
@@ -371,7 +371,7 @@
                     </Anchors>
                     <Layers>
                         <Layer level="ARTWORK">
-                            <Texture name="$parentIcon" inherits="XToLevel_AverageFrame_Blocky_CounterIcon" file="Interface\AddOns\XToLevel\textures\dungeon_icon.tga"></Texture>
+                            <Texture name="$parentIcon" inherits="XToLevel_AverageFrame_Blocky_CounterIcon" file="Interface\AddOns\XToLevel\Textures\dungeon_icon.tga"></Texture>
                         </Layer>
                     </Layers>
                     <Scripts>
@@ -392,7 +392,7 @@
                     </Anchors>
                     <Layers>
                         <Layer level="ARTWORK">
-                            <Texture name="$parentIcon" inherits="XToLevel_AverageFrame_Blocky_CounterIcon" file="Interface\AddOns\XToLevel\textures\pet_icon.tga"></Texture>
+                            <Texture name="$parentIcon" inherits="XToLevel_AverageFrame_Blocky_CounterIcon" file="Interface\AddOns\XToLevel\Textures\pet_icon.tga"></Texture>
                         </Layer>
                     </Layers>
                     <Scripts>
@@ -413,7 +413,7 @@
                     </Anchors>
                     <Layers>
                         <Layer level="ARTWORK">
-                            <Texture name="$parentIcon" inherits="XToLevel_AverageFrame_Blocky_CounterIcon" file="Interface\AddOns\XToLevel\textures\battle_horde_icon.tga"></Texture>
+                            <Texture name="$parentIcon" inherits="XToLevel_AverageFrame_Blocky_CounterIcon" file="Interface\AddOns\XToLevel\Textures\battle_horde_icon.tga"></Texture>
                         </Layer>
                     </Layers>
                     <Scripts>
@@ -434,7 +434,7 @@
                     </Anchors>
                     <Layers>
                         <Layer level="ARTWORK">
-                            <Texture name="$parentIcon" inherits="XToLevel_AverageFrame_Blocky_CounterIcon" file="Interface\AddOns\XToLevel\textures\objective_icon.tga"></Texture>
+                            <Texture name="$parentIcon" inherits="XToLevel_AverageFrame_Blocky_CounterIcon" file="Interface\AddOns\XToLevel\Textures\objective_icon.tga"></Texture>
                         </Layer>
                     </Layers>
                     <Scripts>
@@ -455,7 +455,7 @@
                     </Anchors>
                     <Layers>
                         <Layer level="ARTWORK">
-                            <Texture name="$parentIcon" inherits="XToLevel_AverageFrame_Blocky_CounterIcon" file="Interface\AddOns\XToLevel\textures\mining_icon.tga"></Texture>
+                            <Texture name="$parentIcon" inherits="XToLevel_AverageFrame_Blocky_CounterIcon" file="Interface\AddOns\XToLevel\Textures\mining_icon.tga"></Texture>
                         </Layer>
                     </Layers>
                     <Scripts>
@@ -476,7 +476,7 @@
                     </Anchors>
                     <Layers>
                         <Layer level="ARTWORK">
-                            <Texture name="$parentIcon" inherits="XToLevel_AverageFrame_Blocky_CounterIcon" file="Interface\AddOns\XToLevel\textures\arch_icon.tga">
+                            <Texture name="$parentIcon" inherits="XToLevel_AverageFrame_Blocky_CounterIcon" file="Interface\AddOns\XToLevel\Textures\arch_icon.tga">
                                 <Size x="16" y="16"/>
                             </Texture>
                         </Layer>
@@ -515,7 +515,7 @@
                     </Anchors>
                     <Layers>
                         <Layer level="ARTWORK">
-                            <Texture name="$parentIcon" inherits="XToLevel_AverageFrame_Blocky_CounterIcon" file="Interface\AddOns\XToLevel\textures\timer_icon.tga"></Texture>
+                            <Texture name="$parentIcon" inherits="XToLevel_AverageFrame_Blocky_CounterIcon" file="Interface\AddOns\XToLevel\Textures\timer_icon.tga"></Texture>
                         </Layer>
                     </Layers>
                     <Scripts>

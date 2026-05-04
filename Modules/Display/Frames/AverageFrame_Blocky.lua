@@ -24,7 +24,7 @@ XToLevel.AverageFrameAPI["Blocky"] =
         local db = DBModule:GetDB()
 
 	    local iconName = (UnitFactionGroup("player") == "Alliance") and "battle_ally_icon.tga" or "battle_horde_icon.tga"
-	    XToLevel_AverageFrame_Blocky_PlayerFrameCounterBattlesIcon:SetTexture("Interface\\AddOns\\XToLevel\\textures\\" .. iconName)
+	    XToLevel_AverageFrame_Blocky_PlayerFrameCounterBattlesIcon:SetTexture("Interface\\AddOns\\XToLevel\\Textures\\" .. iconName)
         
         -- Fetch boxes
         self.playerBoxes = {
