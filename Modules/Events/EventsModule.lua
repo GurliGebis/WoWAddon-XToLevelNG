@@ -6,7 +6,7 @@ local addonName, addonTable = ...
 local XToLevel = LibStub("AceAddon-3.0"):GetAddon(addonName)
 local EventsModule = XToLevel:NewModule("EventsModule", "AceEvent-3.0", "AceTimer-3.0")
 
-local L = addonTable.GetLocale()
+local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 local Helpers = _XToLevel.Helpers
 
 -- State

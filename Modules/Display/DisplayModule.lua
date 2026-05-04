@@ -6,7 +6,7 @@ local addonName, addonTable = ...
 local XToLevel = LibStub("AceAddon-3.0"):GetAddon(addonName)
 local DisplayModule = XToLevel:NewModule("DisplayModule")
 
-local L = addonTable.GetLocale()
+local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 local Helpers = _XToLevel.Helpers
 
 -- Message styles

@@ -6,7 +6,7 @@ local addonName, addonTable = ...
 local XToLevel = LibStub("AceAddon-3.0"):GetAddon(addonName)
 local ConfigModule = XToLevel:NewModule("ConfigModule")
 
-local L = addonTable.GetLocale()
+local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 local Helpers = _XToLevel.Helpers
 local Constants = _XToLevel.Constants
 
@@ -16,20 +16,6 @@ function ConfigModule:OnInitialize()
 end
 
 function ConfigModule:OnEnable()
-    local DBModule = XToLevel:GetModule("DBModule")
-    local LocaleModule = XToLevel:GetModule("LocaleModule")
-
-    -- Set the display locale
-    if not LocaleModule:SetLocale(DBModule:GetProfile().general.displayLocale) then
-        console:log("Attempted to load unknown locale '" .. tostring(DBModule:GetProfile().general.displayLocale) .. "'. Falling back on 'enUS'.")
-        DBModule:GetProfile().general.displayLocale = "enUS"
-        if not LocaleModule:SetLocale("enUS") then
-            print("|cFFaaaaaaXToLevel - |r|cFFFF5533Fatal error:|r Locale files not found. (Try re-installing the addon.)")
-            return
-        end
-    end
-    LocaleModule:WipeLocales()
-
     self:RegisterOptions()
     self:RegisterDialogs()
 
@@ -201,38 +187,11 @@ function ConfigModule:RegisterDialogs()
         hideOnEscape = true,
     }
 
-    StaticPopupDialogs['XToLevelConfig_LocaleReload'] = {
-        text = L["Config Language Reload Prompt"],
-        button1 = L["Yes"],
-        button2 = L["No"],
-        OnAccept = function()
-            -- value is set before showing dialog
-        end,
-        timeout = 30,
-        whileDead = true,
-        hideOnEscape = true,
-    }
 end
 
 -- ----------------------------------------------------------------------------
 -- Config GUI callbacks (used as handler methods by AceConfig)
 -- ----------------------------------------------------------------------------
-
-function ConfigModule:SetLocale(info, value)
-    local DBModule = XToLevel:GetModule("DBModule")
-    local db = DBModule:GetDB()
-    StaticPopupDialogs['XToLevelConfig_LocaleReload'].OnAccept = function()
-        db.profile.general.displayLocale = value
-        ReloadUI()
-    end
-    StaticPopup_Show("XToLevelConfig_LocaleReload")
-end
-
-function ConfigModule:GetLocale(info)
-    local DBModule = XToLevel:GetModule("DBModule")
-    local db = DBModule:GetDB()
-    return db.profile.general.displayLocale
-end
 
 function ConfigModule:SetActiveWindow(info, value)
     local DBModule = XToLevel:GetModule("DBModule")
@@ -298,7 +257,6 @@ function ConfigModule:GetOptions()
     local DBModule = XToLevel:GetModule("DBModule")
     local PlayerModule = XToLevel:GetModule("PlayerModule")
     local DisplayModule = XToLevel:GetModule("DisplayModule")
-    local LocaleModule = XToLevel:GetModule("LocaleModule")
     local db = DBModule:GetDB()
 
     local version = C_AddOns.GetAddOnMetadata(addonName, "Version") or "unknown"
@@ -359,28 +317,13 @@ function ConfigModule:GetOptions()
                 type = "group",
                 name = "General",
                 args = {
-                    localeHeader = {
-                        order = 0,
-                        type = "header",
-                        name = L["Locale Header"],
-                    },
-                    localeSelect = {
-                        order = 1,
-                        type = "select",
-                        name = L["Locale Select"],
-                        desc = L["Locale Select Description"],
-                        style = "dropdown",
-                        values = LocaleModule:GetDisplayLocales(),
-                        get = "GetLocale",
-                        set = "SetLocale",
-                    },
                     debugHeader = {
-                        order = 2,
+                        order = 0,
                         type = "header",
                         name = L["Misc Header"],
                     },
                     debugEnabled = {
-                        order = 3,
+                        order = 1,
                         type = "toggle",
                         name = L["Show Debug Info"],
                         desc = L["Debug Info Description"],
@@ -388,7 +331,7 @@ function ConfigModule:GetOptions()
                         set = function(info, value) db.profile.general.showDebug = value end,
                     },
                     rafEnabled = {
-                        order = 4,
+                        order = 2,
                         type = "toggle",
                         name = L["Recruit A Friend"],
                         desc = L["RAF Description"],
