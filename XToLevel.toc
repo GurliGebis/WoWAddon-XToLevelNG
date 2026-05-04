@@ -11,34 +11,35 @@
 ## Category-deDE: Quests
 ## Category-esES: Misiones
 ## Category-esMX: Misiones
-## Category-frFR: Quêtes
+## Category-frFR: Quetes
 ## Category-itIT: Missioni
 ## Category-koKR: 퀘스트
-## Category-ptBR: Missões
+## Category-ptBR: Missoes
 ## Category-ruRU: Задания
 ## Category-zhCN: 任务
 ## Category-zhTW: 任務
-## OptionalDeps: LibStub,CallbackHandler-1.0,LibDataBroker-1.1,AceTimer-3.0,AceConfig-3.0,AceGUI-3.0,AceDB-3.0,AceDBOptions-3.0
+## OptionalDeps: LibStub,CallbackHandler-1.0,LibDataBroker-1.1,AceAddon-3.0,AceEvent-3.0,AceTimer-3.0,AceConfig-3.0,AceGUI-3.0,AceDB-3.0,AceDBOptions-3.0
 ## DefaultState: Enabled
 ## LoadOnDemand: 0
 ## SavedVariables: XToLevelDB
 ## SavedVariablesPerCharacter: sConfig,sData
 
+# Libs
 embeds.xml
 
+# Locale
 locale\locale.xml
 
+# Core
 Main.lua
-Tables.lua
-Libs.lua
-Config.lua
 
-objects\Messages.lua
-objects\LDB.lua
-objects\Tooltip.lua
-objects\Average.lua
-objects\Player.lua
+# Common (shared constants and helpers)
+Common\common.xml
 
+# Modules
+Modules\modules.xml
+
+# Frames (to be migrated into Display module)
 frames\GlobalTemplates.xml
 frames\AverageFrame_Classic.xml
 frames\AverageFrame_Blocky.xml

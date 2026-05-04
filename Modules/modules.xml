@@ -1,0 +1,8 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+    <Include file="Locale\LocaleModule.xml" />
+    <Include file="DB\DBModule.xml" />
+    <Include file="Player\PlayerModule.xml" />
+    <Include file="Config\ConfigModule.xml" />
+    <Include file="Events\EventsModule.xml" />
+    <Include file="Display\DisplayModule.xml" />
+</Ui>
