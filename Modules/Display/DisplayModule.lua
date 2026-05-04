@@ -25,14 +25,136 @@ DisplayModule.floatingStyle = {
 function DisplayModule:OnInitialize()
 end
 
+-- Average frame state
+DisplayModule.Average = {
+    activeAPI = "Blocky",
+    knownAPIs = { [1] = "Blocky", [2] = "Classic" },
+}
+
 function DisplayModule:OnEnable()
-    -- LDB and Average frame initialization will be called here
-    -- once those subsystems are migrated
+    self:InitializeTooltip()
+    self:InitializeLDB()
+    self:InitializeAverage()
 end
 
---- Full update of all display elements
+--- Full update of all display elements (LDB + Average frames)
 function DisplayModule:Update()
-    -- TODO: Wire to LDB:BuildPattern(), LDB:Update(), Average:Update()
+    self:LDBBuildPattern()
+    self:LDBUpdate()
+    self:LDBUpdateTimer()
+    self:UpdateAverage()
+end
+
+--- Initialize Average frame orchestration
+function DisplayModule:InitializeAverage()
+    local DBModule = XToLevel:GetModule("DBModule")
+    local db = DBModule:GetDB()
+
+    self.Average.activeAPI = self.Average.knownAPIs[db.profile.averageDisplay.mode]
+    if XToLevel.AverageFrameAPI then
+        for index, name in ipairs(self.Average.knownAPIs) do
+            if XToLevel.AverageFrameAPI[name] then
+                XToLevel.AverageFrameAPI[name]:Initialize()
+            end
+        end
+    end
+    self:UpdateAverage()
+end
+
+--- Update the active Average frame window
+function DisplayModule:UpdateAverage()
+    local DBModule = XToLevel:GetModule("DBModule")
+    local PlayerModule = XToLevel:GetModule("PlayerModule")
+    local db = DBModule:GetDB()
+
+    if not XToLevel.AverageFrameAPI then return end
+
+    if PlayerModule.level < PlayerModule:GetMaxLevel() then
+        -- Handle mode switch
+        if self.Average.activeAPI ~= self.Average.knownAPIs[db.profile.averageDisplay.mode] then
+            for index, name in ipairs(self.Average.knownAPIs) do
+                if XToLevel.AverageFrameAPI[name] then
+                    XToLevel.AverageFrameAPI[name]:Update()
+                end
+            end
+            if self.Average.knownAPIs[db.profile.averageDisplay.mode] ~= nil then
+                self:AlignAverageBoxes(self.Average.activeAPI, self.Average.knownAPIs[db.profile.averageDisplay.mode])
+                self.Average.activeAPI = self.Average.knownAPIs[db.profile.averageDisplay.mode]
+            end
+        end
+
+        local api = XToLevel.AverageFrameAPI[self.Average.activeAPI]
+        if api and self.Average.knownAPIs[db.profile.averageDisplay.mode] ~= nil then
+            if PlayerModule.isActive then
+                api:SetKills(PlayerModule:GetAverageKillsRemaining() or nil)
+                api:SetQuests(PlayerModule:GetAverageQuestsRemaining() or nil)
+                api:SetPetBattles(PlayerModule:GetAveragePetBattlesRemaining() or nil)
+                api:SetDungeons(PlayerModule:GetAverageDungeonsRemaining() or nil)
+                api:SetBattles(PlayerModule:GetAverageBGsRemaining() or nil)
+                api:SetObjectives(PlayerModule:GetAverageBGObjectivesRemaining() or nil)
+                api:SetProgress(Helpers:round((PlayerModule.currentXP or 0) / (PlayerModule.maxXP or 1) * 100, 1))
+                api:SetGathering(PlayerModule:GetGatheringRequired())
+
+                if db.profile.averageDisplay.archaeologyAsSites then
+                    api:SetDigs(PlayerModule:GetDigsitesRequired() or nil)
+                else
+                    api:SetDigs(PlayerModule:GetDigsRequired() or nil)
+                end
+
+                if db.profile.averageDisplay.guildProgressType == 1 then
+                    api:SetGuildProgress(PlayerModule:GetGuildProgressAsPercentage(1))
+                else
+                    api:SetGuildProgress(PlayerModule:GetGuildDailyProgressAsPercentage(1))
+                end
+
+                PlayerModule:UpdateTimer()
+            end
+            api:Update()
+        end
+    elseif XToLevel.AverageFrameAPI[self.Average.activeAPI] ~= nil then
+        XToLevel.AverageFrameAPI[self.Average.activeAPI]:Hide()
+    end
+end
+
+--- Update Average frame timer display
+function DisplayModule:UpdateAverageTimer(secondsToLevel)
+    local DBModule = XToLevel:GetModule("DBModule")
+    local db = DBModule:GetDB()
+
+    if not XToLevel.AverageFrameAPI then return end
+    if self.Average.knownAPIs[db.profile.averageDisplay.mode] == nil then return end
+
+    local api = XToLevel.AverageFrameAPI[self.Average.activeAPI]
+    if not api then return end
+
+    local short, long = "N/A", "N/A"
+    if type(secondsToLevel) == "number" and secondsToLevel > 0 and secondsToLevel ~= math.huge then
+        if secondsToLevel < 60 then
+            short = ("%ds"):format(secondsToLevel)
+            long = short
+        elseif secondsToLevel < 3600 then
+            short = ("%dm"):format(math.floor(secondsToLevel / 60 + 0.5))
+            long = short.." "..("%ds"):format(math.fmod(secondsToLevel, 60))
+        elseif secondsToLevel < 86400 then
+            short = ("%dh"):format(math.floor(secondsToLevel / 3600 + 0.5))
+            long = short.." "..("%dm"):format(math.fmod(secondsToLevel, 3600))
+        else
+            short = ("%dd"):format(math.floor(secondsToLevel / 86400 + 0.5))
+            long = short.." "..("%dh"):format(math.fmod(secondsToLevel, 86400))
+        end
+    end
+    api:SetTimer(short, long)
+end
+
+--- Align average frame boxes when switching modes
+function DisplayModule:AlignAverageBoxes(parent, child)
+    if parent ~= child and parent ~= nil and child ~= nil then
+        local parentAPI = XToLevel.AverageFrameAPI[parent]
+        local childAPI = XToLevel.AverageFrameAPI[child]
+        if parentAPI and childAPI then
+            childAPI:AlignTo(parentAPI)
+        end
+    end
 end
 
 --- Debug message

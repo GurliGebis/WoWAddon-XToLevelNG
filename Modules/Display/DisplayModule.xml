@@ -1,3 +1,5 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
     <Script file="DisplayModule.lua" />
+    <Script file="LDB.lua" />
+    <Script file="Tooltip.lua" />
 </Ui>
