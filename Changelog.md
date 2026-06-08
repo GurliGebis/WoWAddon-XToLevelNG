@@ -1,3 +1,6 @@
+# 12.0.5-20260608-1
+* Updated Classic TOC to match 5.5.4
+
 # 12.0.5-20260421-1
 * Updated TOC to match WoW 12.0.5
 
