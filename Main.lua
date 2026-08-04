@@ -400,8 +400,10 @@ function XToLevel:OnPlayerLevelUp(newLevel)
 	
 	if newLevel >= XToLevel.Player:GetMaxLevel() then
         XToLevel.Player.isActive = false
-        XToLevel:UnregisterEvents()
-        XToLevel:RegisterEvents(newLevel)
+        C_Timer.After(0, function()
+            XToLevel:UnregisterEvents()
+            XToLevel:RegisterEvents(newLevel)
+        end)
     end
     
     XToLevel.Player:ClearKills()

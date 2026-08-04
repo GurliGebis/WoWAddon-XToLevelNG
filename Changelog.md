@@ -1,3 +1,6 @@
+# 12.0.7-20260805-1
+* Fix ADDON_ACTION_FORBIDDEN error when unregistering events after hitting max level during combat.
+
 # 12.0.7-20260617-1
 * Updated TOC to match 12.0.7
 
