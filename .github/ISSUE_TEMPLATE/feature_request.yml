@@ -18,6 +18,7 @@ body:
       options:
         - Retail
         - MoP Classic
+        - Forever Beta
         - All Variants
     validations:
       required: true

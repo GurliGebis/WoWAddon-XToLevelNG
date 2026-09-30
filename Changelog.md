@@ -1,3 +1,6 @@
+# 12.1.0-20260930-1
+* Added TOC support for World of Warcraft: Forever (Beta).
+
 # 12.1.0-20260813-1
 * Updated TOC for classic.
 
